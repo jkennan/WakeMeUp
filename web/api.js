@@ -18,6 +18,7 @@ router.route('/schedule')
                 
                 let date = new Date(year, month, day, hours, minutes, 0, 0);
                 action.setScheduledTime(date);
+                action.schedule();
             } else {
                 action.openCurtain();
             }
