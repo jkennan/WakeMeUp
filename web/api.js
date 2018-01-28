@@ -10,7 +10,7 @@ router.route('/schedule')
         .post((req,res) => {
             let b = req.body;
             console.log(b);
-            if (b.scheduled) {
+            if (b.scheduled === 'true') {
                 let year  = b.year;
                 let month = b.month;
                 let day   = b.day;
@@ -26,19 +26,20 @@ router.route('/schedule')
             }
         })
         .get((req, res) => {
-            let date = action.getScheduledTime();
-            if (date == null) {
-                res.send('No date set.');
-            }
-            response = {
-                year  : date.getFullYear(),
-                month : date.getMonth(),
-                day   : date.getDate(),
-                hour  : date.getHours(),
-                min   : date.getMinutes()
-            }
+            // let date = action.getScheduledTime();
+            // if (date == null) {
+            //     res.send('No date set.');
+            // }
+            // response = {
+            //     year  : date.getFullYear(),
+            //     month : date.getMonth(),
+            //     day   : date.getDate(),
+            //     hour  : date.getHours(),
+            //     min   : date.getMinutes()
+            // }
 
-            res.send(JSON.stringify(response));
+            // res.send(JSON.stringify(response));
+            console.log('get recd');
         })
 
 module.exports = router;
