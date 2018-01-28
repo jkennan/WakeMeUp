@@ -51,7 +51,7 @@
                 <h1 class="header-headline bold"> Be a morning person. Naturally. <br></h1>
                 <h4 class="header-running-text light"> Using voice-controlled light and haptic alarms, Wake Me Up wakes you up in the healthy way your body intended.</h4>
                 <a href="#email-form">
-                    <button class="hero-btn"> Move them curtains </button>
+                    <button onclick="openCurtain()" class="hero-btn"> Move them curtains </button>
                 </a>
             </div><!--hero-left-->
 
@@ -303,22 +303,23 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-sm-2"></div>
+            <div class="col-sm-3 madewithtext">
+                Made with <i class="fa fa-heart" aria-hidden="true"></i> at Hack@Brown
+            </div>
 
-            <div class="col-sm-8 webscope">
-                <span class="webscope-text">
-                    <div>
-                        Made with <i class="fa fa-heart" aria-hidden="true"></i> at Hack@Brown ... TODO: Make this text bigger and middle align
-                    </div>
-                </span>
+            <div class="col-sm-6">
+                <!--<span class="webscope-text">
+                </span>-->
                 <!--<a href="https://webscopeapp.com"> <img src="assets/images/webscope.svg"/> </a>-->
             </div>
             <!--webscope-->
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="social-links">
-                    <a href="https://www.github.com/jkennan/WakeMeUp" class="fa fa-github-alt" style="color:white" aria-hidden="true"></a>
-                    <a href="https://www.github.com/jkennan/WakeMeUp" class="fa fa-github-alt" style="color:white" aria-hidden="true"></a>
+                    <a href="https://www.github.com/jkennan/WakeMeUp" class="fa fa-github-alt social-link" style="text-decoration:none right:2rem" aria-hidden="true"></a>
+                    <a href="https://www.github.com/jkennan/WakeMeUp" class="fa social-link" aria-hidden="true">
+                        <img class="devposticon" src="assets/images/devpostpic.png"></img>
+                    </a>
                 </div>
                 <!--social-links-->
             </div>
@@ -337,6 +338,8 @@
         crossorigin="anonymous"></script>
 
 <script src="assets/js/script.js"></script>
+
+<script src="curtain-action.js"></script>
 
 </body>
 
