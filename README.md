@@ -10,4 +10,5 @@ Use an Alexa skill or website to set your alarm, and when the time comes, we'll 
  - Node.js
  - jQuery
  - Heroku hosting
+ - Alexa
  
