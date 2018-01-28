@@ -1,5 +1,9 @@
-const http = require('http');
-const $ = require('jquery');
+const https = require('https');
+
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`<!DOCTYPE html`);
+const $ = require('jquery')(window);
 
 let scheduledTime = null;
 
@@ -22,29 +26,25 @@ module.exports.openCurtain = () => {
     //     }
     // })
 
-    let request = new http.request({
-        hostname: 'www.httpbin.org',
-        path    : '/post',
-        method  : 'POST',
-        headers : {
-            'Content-Type' : 'application/json',
-            'Content-Length' : Buffer.byteLength(body)
-        }
-        
-    }, () => console.log('finished request'))
-
-    // $.post(
-    //     'http://www.httpbin.org',
-    //     {
-    //         name: 'what',
-    //         city: 'yes please'
-    //     }, 
-    //     (data, status) => {
-    //         console.log('Data: ' + data + '\nstatus: ' + status);
+    // let request = new https.request({
+    //     hostname: 'api.particle.io',
+    //     path    : '/v1/devices/2b003f001747343338333633/wake',
+    //     port    : '443',
+    //     method  : 'POST',
+    //     headers : {
+    //         'Content-Type' : 'application/json',
+    //         'Content-Length' : body.length,
+    //         accept : '*/*'
     //     }
-    // );
-    request.write("");
-    request.end(() => console.log('really done'));
+        
+    // }, (res) => console.log(res))
+
+    $.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
+        access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+        arg: "open"
+    }, (data, status) => {console.log(data); console.log(status)});
+    // request.write(body);
+    // request.end(() => console.log('really done'));
 }
 
 module.exports.getScheduledTime = () => {
