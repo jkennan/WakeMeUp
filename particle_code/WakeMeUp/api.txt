@@ -1,0 +1,13 @@
+To open the curtains:
+
+$.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
+  access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+  arg: "open"
+}, () => {});
+
+---
+To turn it all off:
+$.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
+  access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+  arg: "off"
+}, () => {});
