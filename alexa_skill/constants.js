@@ -16,6 +16,9 @@ module.exports = Object.freeze({
         STOP_MESSAGE: 'Goodbye!',
         UNHANDLED_MESSAGE: 'Sorry, I could not understand. Please try again.',
         TIME_SET: 'Your time has been set to ',
-        SLEEP_MESSAGE: 'Alright, goodnight!'
-    }
-})
+        SLEEP_MESSAGE: 'Alright, goodnight!',
+        SITE: 'rise-hab.herokuapp.com',
+    },
+
+    port: 5000,
+});

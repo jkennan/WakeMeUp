@@ -2,5 +2,8 @@
     "scripts": {
         "postinstall": "cd web && npm install",
         "start": "node web/server.js"
+    },
+    "dependencies": {
+        "alexa-sdk": "^1.0.25"
     }
 }

@@ -4,6 +4,10 @@ var Alexa = require('alexa-sdk');
 var constants = require('./constants');
 var http = require('http');
 var datetime = require('node-datetime');
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`<!DOCTYPE html`);
+const $ = require('jquery')(window);
 
 let dt = datetime.create();
 dt.offsetInDays(1);
@@ -43,12 +47,13 @@ var intentHandlers = {
             min: inputMins,
             year: year,
             month: month,
-            day: day
+            day: day,
+            scheduled: false,
         })
 
         var request = new http.ClientRequest({
-            hostname: 'localhost',
-            port: 8080,
+            hostname: constants.strings.SITE,
+            port: constants.port,
             path: '/api/schedule',
             method: "POST",
             headers: {
@@ -65,6 +70,12 @@ var intentHandlers = {
             console.log('BODY: ' + chunk);
           });
         });
+    
+        $.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
+            access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+            arg: "open"
+        }, (data, status) => {console.log(data); console.log(status)});
+
         this.emit(':tell', constants.strings.TIME_SET + timeSlot.value);
       } else {
         this.emit(':tell', constants.strings.UNHANDLED_MESSAGE);
@@ -97,12 +108,13 @@ var intentHandlers = {
             min: inputMins,
             year: year,
             month: month,
-            day: day
+            day: day,
+            scheduled: false,
         })
 
         var request = new http.ClientRequest({
-            hostname: 'localhost',
-            port: 8080,
+            hostname: constants.strings.SITE,
+            port: constants.port,
             path: '/api/schedule',
             method: "POST",
             headers: {
@@ -119,6 +131,12 @@ var intentHandlers = {
             console.log('BODY: ' + chunk);
           });
         });
+    
+        $.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
+            access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+            arg: "open"
+        }, (data, status) => {console.log(data); console.log(status)});
+      
         this.emit(':tell', constants.strings.TIME_SET + timeSlot.value);
       } else {
         this.emit(':tell', constants.strings.UNHANDLED_MESSAGE);
@@ -126,6 +144,10 @@ var intentHandlers = {
     },
 
     'SleepIntent': function () {
+      $.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
+          access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+          arg: "off"
+      }, (data, status) => {console.log(data); console.log(status)});
       this.emit(':tell', constants.strings.SLEEP_MESSAGE);
     },
 
