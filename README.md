@@ -9,4 +9,5 @@ Use an Alexa skill or website to set your alarm, and when the time comes, we'll 
  - Photon development board
  - Node.js
  - jQuery
- - Firebase Hosting
+ - Heroku hosting
+ 
