@@ -26,20 +26,19 @@ router.route('/schedule')
             }
         })
         .get((req, res) => {
-            // let date = action.getScheduledTime();
-            // if (date == null) {
-            //     res.send('No date set.');
-            // }
-            // response = {
-            //     year  : date.getFullYear(),
-            //     month : date.getMonth(),
-            //     day   : date.getDate(),
-            //     hour  : date.getHours(),
-            //     min   : date.getMinutes()
-            // }
+            let date = action.getScheduledTime();
+            if (date == null) {
+                res.send('No date set.');
+            }
+            response = {
+                year  : date.getFullYear(),
+                month : date.getMonth(),
+                day   : date.getDate(),
+                hour  : date.getHours(),
+                min   : date.getMinutes()
+            }
 
-            // res.send(JSON.stringify(response));
-            console.log('get recd');
+            res.send(JSON.stringify(response));
         })
 
 module.exports = router;

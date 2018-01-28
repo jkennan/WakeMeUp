@@ -1,4 +1,5 @@
 const http = require('http');
+const $ = require('jquery');
 
 let scheduledTime = null;
 
@@ -21,7 +22,7 @@ module.exports.openCurtain = () => {
     //     }
     // })
 
-    let request = new http.ClientRequest({
+    let request = new http.request({
         hostname: 'www.httpbin.org',
         path    : '/post',
         method  : 'POST',
@@ -29,9 +30,21 @@ module.exports.openCurtain = () => {
             'Content-Type' : 'application/json',
             'Content-Length' : Buffer.byteLength(body)
         }
-    })
+        
+    }, () => console.log('finished request'))
 
-    request.end();
+    // $.post(
+    //     'http://www.httpbin.org',
+    //     {
+    //         name: 'what',
+    //         city: 'yes please'
+    //     }, 
+    //     (data, status) => {
+    //         console.log('Data: ' + data + '\nstatus: ' + status);
+    //     }
+    // );
+    request.write("");
+    request.end(() => console.log('really done'));
 }
 
 module.exports.getScheduledTime = () => {
