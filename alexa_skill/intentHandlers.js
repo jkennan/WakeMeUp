@@ -51,25 +51,25 @@ var intentHandlers = {
             scheduled: false,
         })
 
-        var request = new http.ClientRequest({
-            hostname: constants.strings.SITE,
-            port: constants.port,
-            path: '/api/schedule',
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Content-Length": Buffer.byteLength(body)
-            }
-        });
-        request.end(body);
-        request.on('response', function (response) {
-          console.log('STATUS: ' + response.statusCode);
-          console.log('HEADERS: ' + JSON.stringify(response.headers));
-          response.setEncoding('utf8');
-          response.on('data', function (chunk) {
-            console.log('BODY: ' + chunk);
-          });
-        });
+        // var request = new http.ClientRequest({
+        //     hostname: constants.strings.SITE,
+        //     port: constants.port,
+        //     path: '/api/schedule',
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Content-Length": Buffer.byteLength(body)
+        //     }
+        // });
+        // request.end(body);
+        // request.on('response', function (response) {
+        //   console.log('STATUS: ' + response.statusCode);
+        //   console.log('HEADERS: ' + JSON.stringify(response.headers));
+        //   response.setEncoding('utf8');
+        //   response.on('data', function (chunk) {
+        //     console.log('BODY: ' + chunk);
+        //   });
+        // });
     
         $.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
             access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
@@ -112,25 +112,25 @@ var intentHandlers = {
             scheduled: false,
         })
 
-        var request = new http.ClientRequest({
-            hostname: constants.strings.SITE,
-            port: constants.port,
-            path: '/api/schedule',
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Content-Length": Buffer.byteLength(body)
-            }
-        });
-        request.end(body);
-        request.on('response', function (response) {
-          console.log('STATUS: ' + response.statusCode);
-          console.log('HEADERS: ' + JSON.stringify(response.headers));
-          response.setEncoding('utf8');
-          response.on('data', function (chunk) {
-            console.log('BODY: ' + chunk);
-          });
-        });
+        // var request = new http.ClientRequest({
+        //     hostname: constants.strings.SITE,
+        //     port: constants.port,
+        //     path: '/api/schedule',
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Content-Length": Buffer.byteLength(body)
+        //     }
+        // });
+        // request.end(body);
+        // request.on('response', function (response) {
+        //   console.log('STATUS: ' + response.statusCode);
+        //   console.log('HEADERS: ' + JSON.stringify(response.headers));
+        //   response.setEncoding('utf8');
+        //   response.on('data', function (chunk) {
+        //     console.log('BODY: ' + chunk);
+        //   });
+        // });
     
         $.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
             access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",

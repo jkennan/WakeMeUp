@@ -28,9 +28,9 @@ void loop() {
 
 int wakeUp(String command) {
   if (command == "open") {
-    lightUp();
     digitalWrite(motor, HIGH);
-    delay(10000);
+    lightUp();
+    delay(1000);
     digitalWrite(motor, LOW);
     status = 1;
     return 1;
