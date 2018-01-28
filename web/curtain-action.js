@@ -1,27 +1,40 @@
-const request = require('request');
+const http = require('http');
 
 let scheduledTime = null;
 
 
-openCurtain = () => {
-    let options = {
-        access_token : '1a04faed209924df6ed3bdc02ea9bdee08be78a7',
-        arg          : 'open'
-    }
+module.exports.openCurtain = () => {
+    console.log('hello');
 
-    request({
-        url: 'https://api.particle.io/v1/devices/2b003f001747343338333633/wake',
-        method: 'POST',
-        json: {
-            access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
-            arg: "open"
+    let body = JSON.stringify({
+        access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+        arg: "open"
+    })
+
+    // let request = new http.ClientRequest({
+    //     hostname: 'https://api.particle.io',
+    //     path    : '/v1/devices/2b003f001747343338333633/wake',
+    //     method  : 'POST',
+    //     headers : {
+    //         'Content-Type' : 'application/json',
+    //         'Content-Length' : Buffer.byteLength(body)
+    //     }
+    // })
+
+    let request = new http.ClientRequest({
+        hostname: 'www.httpbin.org',
+        path    : '/post',
+        method  : 'POST',
+        headers : {
+            'Content-Type' : 'application/json',
+            'Content-Length' : Buffer.byteLength(body)
         }
     })
+
+    request.end();
 }
 
-exports.openCurtain = openCurtain;
-
-exports.getScheduledTime = () => {
+module.exports.getScheduledTime = () => {
     if (scheduledTime = null) {
         return new Date(0);
     } else {
@@ -29,12 +42,12 @@ exports.getScheduledTime = () => {
     }
 }
 
-exports.setScheduledTime = (time) => {
+module.exports.setScheduledTime = (time) => {
     scheduledTime = time;
     return scheduledTime;
 }
 
-exports.schedule = () => {
+module.exports.schedule = () => {
     function loop() {
         let now = new Date();
         if (now.getDate() === scheduledTime.getDate() 
