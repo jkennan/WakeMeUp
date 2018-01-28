@@ -1,4 +1,6 @@
 const http = require('http');
+let $ = require('jquery');
+var request = require('request');
 
 let scheduledTime = null;
 
@@ -21,17 +23,45 @@ module.exports.openCurtain = () => {
     //     }
     // })
 
-    let request = new http.ClientRequest({
-        hostname: 'www.httpbin.org',
-        path    : '/post',
-        method  : 'POST',
-        headers : {
-            'Content-Type' : 'application/json',
-            'Content-Length' : Buffer.byteLength(body)
-        }
-    })
+    // let request = new http.ClientRequest({
+    //     hostname: 'www.httpbin.org',
+    //     path    : '/post',
+    //     method  : 'POST',
+    //     headers : {
+    //         'Content-Type' : 'application/json',
+    //         'Content-Length' : Buffer.byteLength(body)
+    //     }
+    // })
 
-    request.end();
+    // $.post("www.httpbin.org/post",
+    //     {
+    //         name: "Donald Duck",
+    //         city: "Duckburg"
+    //     },
+    //     function(data,status){
+    //         alert("Data: " + data + "\nStatus: " + status);
+    //     });
+
+    // var request = new XMLHttpRequest();
+    // request.open('POST', 'www.httpbin.org/post', true);
+    // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    // request.send(data);
+    //
+    // request.end();
+
+
+    request.post(
+        'http://www.httpbin.org/post',
+        { json: { key: 'value' } },
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body)
+            }
+            else {
+                console.log('something went wrong');
+            }
+        }
+    );
 }
 
 module.exports.getScheduledTime = () => {

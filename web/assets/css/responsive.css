@@ -40,7 +40,7 @@
         z-index: 1;
         height: 427px;
         margin-top: 45px;
-        transform: rotate(-6deg);
+        /*transform: rotate(-6deg);*/
         max-width: 45%;
         border-radius: 25px;
         background: #fff;
