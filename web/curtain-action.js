@@ -4,7 +4,7 @@ let scheduledTime = null;
 
 
 exports.openCurtain = () => {
-    alert('Opening Curtain');
+    console.log('Opening Curtain');
 }
 
 exports.getScheduledTime = () => {
