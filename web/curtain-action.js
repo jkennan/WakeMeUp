@@ -1,6 +1,10 @@
-const http = require('http');
-let $ = require('jquery');
-var request = require('request');
+
+const https = require('https');
+
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`<!DOCTYPE html`);
+const $ = require('jquery')(window);
 
 let scheduledTime = null;
 
@@ -35,33 +39,26 @@ module.exports.openCurtain = () => {
 
     // $.post("www.httpbin.org/post",
     //     {
-    //         name: "Donald Duck",
-    //         city: "Duckburg"
-    //     },
-    //     function(data,status){
-    //         alert("Data: " + data + "\nStatus: " + status);
-    //     });
 
-    // var request = new XMLHttpRequest();
-    // request.open('POST', 'www.httpbin.org/post', true);
-    // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    // request.send(data);
-    //
-    // request.end();
+    // let request = new https.request({
+    //     hostname: 'api.particle.io',
+    //     path    : '/v1/devices/2b003f001747343338333633/wake',
+    //     port    : '443',
+    //     method  : 'POST',
+    //     headers : {
+    //         'Content-Type' : 'application/json',
+    //         'Content-Length' : body.length,
+    //         accept : '*/*'
+    //     }
+        
+    // }, (res) => console.log(res))
 
-
-    request.post(
-        'http://www.httpbin.org/post',
-        { json: { key: 'value' } },
-        function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                console.log(body)
-            }
-            else {
-                console.log('something went wrong');
-            }
-        }
-    );
+    $.post("https://api.particle.io/v1/devices/2b003f001747343338333633/wake", {
+        access_token: "1a04faed209924df6ed3bdc02ea9bdee08be78a7",
+        arg: "open"
+    }, (data, status) => {console.log(data); console.log(status)});
+    // request.write(body);
+    // request.end(() => console.log('really done'));
 }
 
 module.exports.getScheduledTime = () => {
