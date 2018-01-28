@@ -9,17 +9,19 @@ router.get('/', (req, res) => {
 router.route('/schedule')
         .post((req,res) => {
             let b = req.body;
+            console.log(b);
             if (b.scheduled) {
                 let year  = b.year;
                 let month = b.month;
                 let day   = b.day;
                 let hour  = b.hour;
-                let min   = b.min; 
+                let minute   = b.minute;
                 
-                let date = new Date(year, month, day, hours, minutes, 0, 0);
+                let date = new Date(year, month, day, hour, minute, 0, 0);
                 action.setScheduledTime(date);
             } else {
                 action.openCurtain();
+                res.send(b);
             }
         })
         .get((req, res) => {
